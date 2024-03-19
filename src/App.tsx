@@ -1,17 +1,22 @@
-import ListGroup from "./components/ListGroup";
-const items = [
-  'New york',
-  'Constanta',
-  'Bucuresti',
-  'Suceava'
-];
+import { useState } from "react";
+import Alert from "./components/Alert";
+import Button from "./components/Button";
 
-const handleSelectItem = (item: string) => {
-  console.log(item);
-};
 
 function App() {
-  return <div><ListGroup items={items} heading="Cities" onSelectItem={handleSelectItem}></ListGroup></div>
+  //Hook
+  const [showAlert, setShowAlert] = useState(false);
+
+  return (
+    <div>
+      { showAlert && <Alert onClose={() => setShowAlert(false)}>Alertăăăăă</Alert> }
+      <Button color="secondary" onClick={() =>{
+          setShowAlert(true);
+        }}>
+        Apasă pe <i>mine!!</i>
+      </Button>
+    </div>
+  );
 }
 
 export default App;
